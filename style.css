@@ -646,3 +646,14 @@ img#img {
     border-right: solid;
 }
 }
+
+/* login */
+.loginbackground {
+    background: black;
+}
+
+.loginform {
+    color: white;
+    background: #591796d1;
+    padding: 20px;
+}

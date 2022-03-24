@@ -7,7 +7,7 @@
 </div>
         <!-- body ends -->
         <!-- footer starts -->
-        <div class="mainfooter">
+        <div class="mainfooter" id="mainfooter">
             <div class="topfooter">
                 <div class="row">
                     <div class="col-sm-3">

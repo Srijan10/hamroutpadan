@@ -4,49 +4,24 @@
  */
 
 get_header();
+
+//slider
+
+include_once('features/slider.php');
+
+$item = item();
+print_r($item);
+
 ?>
 <!-- Set up your HTML -->
-<?php 
-    $args = array(
-        'post_type'=> 'slider'
-    );
-    $slider_post = new WP_QUERY($args);
-        if ( $slider_post->have_posts() ) : 
-            while ( $slider_post->have_posts() ) : $slider_post->the_post(); ?>
-              <?php
-            endwhile; 
-        endif; 
-    
 
-        ?>
-	 <div class="sideImage">
-                <div class="slidersimage owl-carousel owl-theme">
-                    <?php
-                if ( $slider_post->have_posts() ) : 
-            while ( $slider_post->have_posts() ) : $slider_post->the_post(); ?>
-            <div class="slider_image">
-            <?php the_post_thumbnail('home-featured')?>
-                       
-                    </div>
-              <?php
-            endwhile; 
-        endif; ?>
-                </div>
-            </div>
 <div class="container">
     <div class="item">
         <div class="row">
         <div class="col-sm-3 category_col">
-            <div class="category">
-                <li><ul class="categoryHeader">Category</ul></li>
-                <li>
-                    <ul><a href="#"><i class="fa fa-mobile"></i>Electronic</a></ul>
-                    <ul><a href="#"><i class="fa fa-child"></i>Clothing</a></ul>
-                    <ul><a href="#"><i class="fa fa-lemon-o"></i>Fooding</a></ul>
-                    <ul><a href="#"><i class="fa fa-shopping-basket"></i>Dairy Products</a></ul>
-                    <ul><a href="#"><i class="fa fa-cube"></i>Furniture</a></ul>
-                </li>
-            </div>
+            <?php
+            include_once(get_template_directory().'/features/hamro_category.php');
+            ?>
         </div>
         <div class="col-sm-9 category_col">
             <div class="product_body">

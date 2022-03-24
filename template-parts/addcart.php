@@ -1,6 +1,14 @@
 <?php 
 /* Template Name: addtocart */
-get_header();?>
+get_header();
+
+$item = item();
+print_r($item);
+echo 'appples';
+?>
+<div class="display">
+    apple
+</div>
 <style>
 
 /* /6 */

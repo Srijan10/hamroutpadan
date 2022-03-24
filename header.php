@@ -22,7 +22,7 @@
 </style>
     <body>
         <!-- header starts -->
-        <div class="mainheader">
+        <div class="mainheader" id="mainheader">
             <!-- topheader -->
            <div class="topheader">
                <div class="topheader_right">
@@ -30,6 +30,8 @@
                </div>
                <div class="topheaderButtons">
                    <button>login/Register</button>
+                   	
+<a href="<?php echo wp_logout_url('http://localhost/hamroutpadan/login-form/'); ?>">Logout</a>
                </div>
            </div>
            <!-- middleheader -->
@@ -51,7 +53,7 @@
                        <div class="leftbuttomheader">
                         <div class="setting"><i class="fa fa-gear"></i></div>
                         <div class="cart"><i class="fa fa-cart-plus"></i></div></div>
-                       </div>
+                    </div>
                </div>
            </div>
         </div>

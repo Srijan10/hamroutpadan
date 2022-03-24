@@ -94,4 +94,16 @@ function showcontentNav(id){
 
 
 // minus and plus
- 
+
+
+
+//login
+
+ function show_pass() {
+   var x = document.getElementById("password");
+   if (x.type === "password") {
+     x.type = "text";
+   } else {
+     x.type = "password";
+   }
+ }
