@@ -2,24 +2,21 @@
 /* Template Name: addtocart */
 get_header();
 
+
+
 $item = item();
-print_r($item);
-echo 'appples';
 ?>
-<div class="display">
+<div class="display" id="cardisplay">
     apple
 </div>
-<style>
-
-/* /6 */
-
-    </style>
 <script>
+    var item  = <?php echo json_encode($item);?>;
+    console.log(item);
 //session starting
 // addtocart = {};
 // localStorage.setItem('addtocart',JSON.stringify(addtocart));
 product = {productName:'baat',price:'2211',description:'This is nice airphone',quantity:'230'};
-// add_to_cart(product);
+// add_to_cart(item[0]);
 function add_to_cart(product){
 var cart_item = JSON.parse(localStorage.getItem('addtocart'));
 cart_item[Object.keys(cart_item).length+1]=product;
@@ -155,3 +152,4 @@ function cart(cart_item){
 
 <?php 
 get_footer();
+?>

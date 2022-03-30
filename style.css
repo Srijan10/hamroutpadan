@@ -238,6 +238,8 @@ th {
 .owl-carousel .brands {
     height: 10rem;
     padding: 1rem;
+}.slider_image {
+    height: 450px;
 }
 
 /**********************************************

@@ -51,3 +51,29 @@ add_action('wp_enqueue_scripts','hamroutpadan_theme_scripts');
 require get_template_directory().'/inc/sliderfunction.php';
 
 require get_template_directory().'/inc/hamro_itemfunction.php';
+
+require get_template_directory().'/inc/hamro_order.php';
+
+require get_template_directory().'/inc/hamro_role.php';
+
+
+function valid_utpadan_user(){
+  $cid = wp_get_current_user()->ID;
+    if($cid>0){
+      return true;
+    }
+    return false;
+}
+
+
+
+
+function form_capture(){
+   
+  if(isset($_POST['btn_submit']))
+  {
+  echo "form captured";
+  }
+}
+
+add_action('wp_head','form_capture');

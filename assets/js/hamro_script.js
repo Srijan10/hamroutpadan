@@ -10,7 +10,7 @@ function displayShowcase(id){
     document.getElementById('merchantbody_container').style.display="none";
     document.getElementById('show_hidden_merchantContainer').style.display="block";
     let xhr = new XMLHttpRequest();
-        url ="http://localhost/haroutpadanfe/templates/merchantpages/"+id.toLowerCase()+".html";
+        url ="http://localhost/hamroutpadan/"+id.toLowerCase();
         xhr.open("GET",url,true);
         xhr.onload = ()=>{
             if(xhr.readyState === XMLHttpRequest.DONE){
