@@ -1,4 +1,7 @@
+<?php
+$db_results = item();
 
+?>
 <div class="container">
     <div class="item">
         <div class="row">
@@ -9,39 +12,26 @@
         </div>
         <div class="col-sm-9 category_col">
             <div class="product_body">
-                <div class="body_card card1">
-                    <div class="card_description">
-                        <div class="product_image"><img src="<?php echo get_template_directory_uri(); ?>/assets/media/img/product/p1.jpg" alt=""></div>
-                        <div class="productName">Violet Tshirt</div>
-                        <div class="productPrice">
-                            <div class="price">
-                                Rs 300</div>
-                            <button class="button"> Add to cart <i class="fa fa-shopping-cart" style="font-size:24px; color:white"></i></button>
+                <?php
+                $i = 0;
+                foreach($db_results as $index=> $item){
+                    $i++;
+                    if($i<4){
+                    ?>      
+                        <div class="body_card card<?php echo $i; ?>">
+                            <div class="card_description">
+                                <div class="product_image"><img src="<?php echo get_template_directory_uri(); ?>/assets/media/img/product/<?php echo $item['image'];?>" alt=""></div>
+                                <div class="productName"><?php echo $item['name']; ?></div>
+                                <div class="productPrice">
+                                    <div class="price">
+                                        Rs <?php echo $item['price'];?></div>
+                                    <a href="http://localhost/hamroutpadan/singleitem/?id=<?php echo $item['id']; ?>" class="button"> Add to cart <i class="fa fa-shopping-cart" style="font-size:24px; color:white"></i></a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="body_card card2">
-                    <div class="card_description">
-                        <div class="product_image"><img src="<?php echo get_template_directory_uri(); ?>/assets/media/img/product/p2.jpg" alt=""></div>
-                        <div class="productName">Violet Tshirt</div>
-                        <div class="productPrice">
-                            <div class="price">
-                                Rs 300</div>
-                            <button class="button"> Add to cart <i class="fa fa-shopping-cart" style="font-size:24px; color:white"></i></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="body_card card3">
-                    <div class="card_description">
-                        <div class="product_image"><img src="<?php echo get_template_directory_uri(); ?>/assets/media/img/product/p3.jpg" alt=""></div>
-                        <div class="productName">Violet Tshirt</div>
-                        <div class="productPrice">
-                            <div class="price">
-                                Rs 300</div>
-                            <button class="button"> Add to cart <i class="fa fa-shopping-cart" style="font-size:24px; color:white"></i></button>
-                        </div>
-                    </div>
-                </div>
+                    <?php
+                }}
+                ?>
             </div>
 
         </div>
@@ -102,57 +92,25 @@
             Category
         </div>
     <div class="custom1 owl-carousel owl-theme">
-            <div class="body_card card1">
-                <div class="card_description">
-                    <div class="product_image"><img src="<?php echo get_template_directory_uri(); ?>/assets/media/img/product/model1.jpg" alt=""></div>
-                    <div class="productName">Violet Tshirt</div>
-                    <div class="productPrice">
-                        <div class="price">
-                            Rs 300</div>
-                        <button class="button"> Add to cart <i class="fa fa-shopping-cart" style="font-size:24px; color:white"></i></button>
-                    </div>
-                </div>
-            </div><div class="body_card card1">
-                <div class="card_description">
-                    <div class="product_image"><img src="<?php echo get_template_directory_uri(); ?>/assets/media/img/product/model2.jpg" alt=""></div>
-                    <div class="productName">Violet Tshirt</div>
-                    <div class="productPrice">
-                        <div class="price">
-                            Rs 300</div>
-                        <button class="button"> Add to cart <i class="fa fa-shopping-cart" style="font-size:24px; color:white"></i></button>
-                    </div>
-                </div>
-            </div><div class="body_card card1">
-                <div class="card_description">
-                    <div class="product_image"><img src="<?php echo get_template_directory_uri(); ?>/assets/media/img/product/model3.jpg" alt=""></div>
-                    <div class="productName">Violet Tshirt</div>
-                    <div class="productPrice">
-                        <div class="price">
-                            Rs 300</div>
-                        <button class="button"> Add to cart <i class="fa fa-shopping-cart" style="font-size:24px; color:white"></i></button>
-                    </div>
-                </div>
-            </div><div class="body_card card1">
-                <div class="card_description">
-                    <div class="product_image"><img src="<?php echo get_template_directory_uri(); ?>/assets/media/img/product/model4.jpg" alt=""></div>
-                    <div class="productName">Violet Tshirt</div>
-                    <div class="productPrice">
-                        <div class="price">
-                            Rs 300</div>
-                        <button class="button"> Add to cart <i class="fa fa-shopping-cart" style="font-size:24px; color:white"></i></button>
-                    </div>
-                </div>
-            </div><div class="body_card card1">
-                <div class="card_description">
-                    <div class="product_image"><img src="<?php echo get_template_directory_uri(); ?>/assets/media/img/product/model5.jpg" alt=""></div>
-                    <div class="productName">Violet Tshirt</div>
-                    <div class="productPrice">
-                        <div class="price">
-                            Rs 300</div>
-                        <button class="button"> Add to cart <i class="fa fa-shopping-cart" style="font-size:24px; color:white"></i></button>
-                    </div>
-                </div>
-            </div>
+    <?php
+                $i = 0;
+                foreach($db_results as $index=> $item){
+                    $i++;
+                    ?>      
+                        <div class="body_card card<?php echo $i; ?>">
+                            <div class="card_description">
+                                <div class="product_image"><img src="<?php echo get_template_directory_uri(); ?>/assets/media/img/product/<?php echo $item['image'];?>" alt=""></div>
+                                <div class="productName"><?php echo $item['name']; ?></div>
+                                <div class="productPrice">
+                                    <div class="price">
+                                        Rs <?php echo $item['price'];?></div>
+                                    <a href="http://localhost/hamroutpadan/singleitem/?id=<?php echo $item['id']; ?>" class="button"> Add to cart <i class="fa fa-shopping-cart" style="font-size:24px; color:white"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    <?php
+                }
+                ?>
         </div>
     </div>
     <style>

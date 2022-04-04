@@ -533,15 +533,21 @@ input[type=number] {
     display: flex;
 }
 .prodctdiv2 {
-    width: 60%;
+    width: 40%;
     padding: 10px;
 }
 .prodctdiv3 {
-    width: 20%;
+    width: 25%;
 }
-
 .prodctdiv4 {
-    width: 20%;
+    display: flex;
+    width: 35%;
+    justify-content: space-evenly;
+}
+.remove_add_item{
+    height: fit-content;
+    padding: 5px;
+    margin: 5px;
 }
 button#minus {
     width: 15%;
@@ -658,4 +664,59 @@ img#img {
     color: white;
     background: #591796d1;
     padding: 20px;
+}
+
+/***add item**/
+
+.addItem {
+    padding: 20px;
+    margin: 40px;
+}.addItem_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}.addItem_form input {
+    margin: 10px;
+    padding: 10px;
+}
+.addItem_form input[type="text"] {
+    width: 400px;
+}
+ 
+.addItem_form input[type="number"] {
+    width: 400px;
+}
+
+.addItem_form textarea {
+    width: 400px;
+    height: 100px;
+}
+.addItem_form input[type="submit"] {
+    width: 200px;
+}
+@media screen and (max-width: 800px){
+    .addItem_form input[type="text"] {
+        width: 80%;
+    }
+    .addItem_form input[type="number"] {
+        width: 80%;
+    }
+    .addItem_form textarea {
+        width: 80%;
+        height: 100px;
+    }
+    .addItem_form input[type="submit"] {
+        width: 80%;
+    }
+}
+
+i.fa.fa-user {
+    color: black;
+}
+a {
+    text-decoration: none;
+}
+img#additem_img {
+    height: 150px;
+    width: auto;
 }

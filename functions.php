@@ -68,12 +68,13 @@ function valid_utpadan_user(){
 
 
 
-function form_capture(){
+// function form_capture(){
    
-  if(isset($_POST['btn_submit']))
-  {
-  echo "form captured";
-  }
-}
+//   if(isset($_POST['btn_submit']))
+//   {
+//   echo "form captured";
+//   print_r($_POST);
+//   }
+// }
 
-add_action('wp_head','form_capture');
+// add_action('wp_head','form_capture');

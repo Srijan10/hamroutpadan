@@ -11,20 +11,24 @@
               </div>
               <div class="account">Account</div>
           </div>
+          <a href="http://localhost/hamroutpadan/additem/">
           <div class="merchantbox" id="addItems" onclick="displayShowcase('additem')">
               <div class="icons">
                   <i class="fa fa-user" aria-hidden="true"></i>
               </div>
               <div class="additems">Add Items</div>
           </div>
+          </a>
       </div>
       <div class="merchantbody">
-          <div class="merchantbox" id="your_product" onclick="displayShowcase('your_product')">
+          <a href="http://localhost/hamroutpadan/your_product/">
+          <div class="merchantbox" id="your_product">
               <div class="icons">
                   <i class="fa fa-user" aria-hidden="true"></i>
               </div>
               <div class="yourProduct">Your product</div>
           </div>
+          </a>
           <div class="merchantbox" id="setting" onclick="displayShowcase('setting')">
               <div class="icons">
                   <i class="fa fa-gears" aria-hidden="true"></i>

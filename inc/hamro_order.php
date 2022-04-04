@@ -20,7 +20,9 @@ function insert_bucket($iid,$quantity){
     if($cid>0){
         if(item($iid)){
             $item = item($iid);
-            if($item['qty']>$quantity){
+            echo $item['qty'];
+            echo $quantity;
+            if($item['qty']>=$quantity){
                 if(!get_bucket($iid)){
                     $wpdb->insert("$bucket_table",array(
                         "cid"=>$cid,
@@ -47,8 +49,7 @@ function insert_bucket($iid,$quantity){
     }
     
     if(count($error)>0){
-        print_r($error);
-        return false;
+        return $error;
     }
 }
 
@@ -76,10 +77,11 @@ function get_bucket($iid=''){
 function remove_bucket($iid){
     global $wpdb;
     $error = array();
+    $bucket = get_bucket($iid);
     $bucket_table = $wpdb->prefix . 'bucket';
     if(get_bucket($iid)){
         return $wpdb->delete("$bucket_table",
-        array("iid" => $iid
+        array("id" => $bucket['id']
         ));
     }else{
         $error['item_not_found'] = "no item in carts";
@@ -103,11 +105,12 @@ function add_single_bucket($iid,$qty=1){
 function update_quantity_bucket($iid,$qty){
     global $wpdb;
     $error = array();
+    $bucket = get_bucket($iid);
     $bucket_table = $wpdb->prefix . 'bucket';
     if(item($iid)['qty']>=$qty){
         $updated = $wpdb->update($bucket_table,array(
             "quantity" => $qty ),
-        array("iid" => $iid));
+        array("id" => $bucket['id']));
         if ( false === $updated ) {
             $error['error_in_update'] = "There was an error while updating.";
         }

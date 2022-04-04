@@ -2,6 +2,14 @@
 
 /* Template Name: testPage*/
 get_header();
+if(isset($_POST)){
+    print_r($_POST);
+}
+if(isset($_GET)){
+    print_r($_GET);
+    
+}
+add_single_bucket(25);
 // if(insert_bucket(10,10)){
 //     echo "item successfully added";
 // }
@@ -25,11 +33,12 @@ get_header();
 // }
 // add_single_bucket(10,4);
 
-if(valid_utpadan_user()){
-    echo "valide";
-}else{
-    echo "invalid";
-}
+// if(valid_utpadan_user()){
+//     echo "valide";
+// }else{
+//     echo "invalid";
+// }
+// insert_bucket(25,7);http://localhost/hamroutpadan/testpage/
 ?>
 
 <?php

@@ -12,7 +12,7 @@ get_header();
 // print_r($author_obj);
 // echo $author_obj->roles[0];
 // print_r(wp_get_current_user());
-$id = 2;
+$id = 3;
 if(is_merchant($id)){
     include_once('merchant/merchant-index.php');
 }elseif(is_customer($id)){
