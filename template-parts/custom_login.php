@@ -178,7 +178,7 @@ button#signin {
                          Submit
                          </button>
                        </div>
-                       Not Signed Up Yet?<a href="#">Sign up </a>
+                       Not Signed Up Yet?<a href="http://localhost/hamroutpadan/registration/">Sign up </a>
                  
                    </div>
                 </form>

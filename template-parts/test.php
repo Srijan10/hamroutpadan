@@ -10,6 +10,10 @@ if(isset($_GET)){
     
 }
 add_single_bucket(25);
+	global $wpdb;
+    // $wpUser->set_role( 'merchant' );
+    
+// do_action('set_user_role',wp_get_current_user()->ID,'merchant','subscriber');
 // if(insert_bucket(10,10)){
 //     echo "item successfully added";
 // }

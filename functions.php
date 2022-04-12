@@ -56,6 +56,8 @@ require get_template_directory().'/inc/hamro_order.php';
 
 require get_template_directory().'/inc/hamro_role.php';
 
+require get_template_directory().'/inc/hamro_category.php';
+
 
 function valid_utpadan_user(){
   $cid = wp_get_current_user()->ID;

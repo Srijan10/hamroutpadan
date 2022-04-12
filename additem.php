@@ -11,7 +11,7 @@ if(isset($_POST)){
         }else{ 
             if(insertItem($_POST['item_name'],$_POST['item_price'],$_POST['item_quantity'],$_FILES['image'],$_POST['item_description'],$_POST['status'])){
             echo "item inserted succesfullty";
-            }   
+            }
         }
    }
 }

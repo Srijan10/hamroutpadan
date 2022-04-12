@@ -2,7 +2,8 @@
 
 //crude operation of items
 
-function item($id='',$mid=''){
+
+function item($id='',$mid='',$order=''){
     global $wpdb;
     $db_results = $wpdb->get_results(
         $wpdb->prepare(
@@ -22,7 +23,20 @@ function item($id='',$mid=''){
                 "select * from wp_item where mid=$mid",''
             ),ARRAY_A
         );
-
+    }if($order){
+        if($order=="asc"){
+            $db_results = $wpdb->get_results(
+                $wpdb->prepare(
+                    "select * from wp_item ORDER BY price",''
+                ),ARRAY_A
+            );
+        }if($order=="desc"){
+            $db_results = $wpdb->get_results(
+                $wpdb->prepare(
+                    "select * from wp_item ORDER BY price DESC",''
+                ),ARRAY_A
+            );
+        }
     }
     return $db_results;
 }
@@ -140,7 +154,6 @@ function removeItem($iid){
 //save image
 
 function save_Image($image){
-    echo "eadf";
     $error = array();
     define("MEDIA_DIR_PATH",get_template_directory());
     $target_dir= MEDIA_DIR_PATH.'/assets/media/img/product/';
@@ -192,3 +205,89 @@ function save_Image($image){
     }
     return $error;
   }
+
+
+//   shop
+
+function category_item($cat){
+    global $wpdb;
+    $db_results = $wpdb->get_results(
+        $wpdb->prepare(
+            "select id from wp_item where category=$cat",''
+        ),ARRAY_A
+    );
+    return $db_results;
+}
+
+
+function display_shop_item($id){
+    $item = item($id);
+    ?>
+    <div class="shopcard_container">
+    <div class="shopcard">
+            <div class="shopcard_image"><a href="http://localhost/hamroutpadan/singleitem/?id=<?php echo $item['id']; ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/media/img/product/<?php echo $item['image'];?>" alt=""></a></div>
+            <div class="shopcard_name"><a href="http://localhost/hamroutpadan/singleitem/?id=<?php echo $item['id']; ?>"><?php echo $item['name'];?></a> </div>
+            <div class="shopcard_price"><a href="http://localhost/hamroutpadan/singleitem/?id=<?php echo $item['id']; ?>"><?php echo $item['price'];?> </a></div>
+    </div>
+</div>
+<?php
+}
+
+function shop_item($id='',$mid='',$order=''){
+    global $wpdb;
+    $db_results = $wpdb->get_results(
+        $wpdb->prepare(
+            "select id from wp_item",''
+        ),ARRAY_A
+    );
+    if($id){
+        $db_results = $wpdb->get_row(
+            $wpdb->prepare(
+                "select id from wp_item where id=$id",''
+            ),ARRAY_A
+        );
+    }
+    if($mid){
+        $db_results = $wpdb->get_results(
+            $wpdb->prepare(
+                "select id from wp_item where mid=$mid",''
+            ),ARRAY_A
+        );
+    }if($order){
+        if($order=="asc"){
+            $db_results = $wpdb->get_results(
+                $wpdb->prepare(
+                    "select id from wp_item ORDER BY price",''
+                ),ARRAY_A
+            );
+        }if($order=="desc"){
+            $db_results = $wpdb->get_results(
+                $wpdb->prepare(
+                    "select id from wp_item ORDER BY price DESC",''
+                ),ARRAY_A
+            );
+        }
+    }
+    return $db_results;
+}
+
+function sort_product_price($db_results,$sort){
+    global $wpdb;
+    $sortproduct = array();
+    
+    for($i = 0;$i<count($db_results);$i++){
+        $sortproduct[$i]['price'] = item($db_results[$i]['id'])['price'];
+        $sortproduct[$i]['id']=$db_results[$i]['id'];
+    }
+    if($sort == 'desc'){
+        asort($sortproduct);
+    }elseif($sort=='asec'){
+        arsort($sortproduct);
+    }
+    $i=0;
+    foreach($sortproduct as $x){
+        $db_results[$i]['id']=$x['id'];
+        $i++;
+    }
+    return $db_results;
+}

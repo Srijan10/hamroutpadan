@@ -37,50 +37,81 @@ $db_results = item();
         </div>
         </div>
     </div>
+    <?php
+
+        $category = category();
+        $x =rand(0,count($category));
+        $randx = array();
+        for($j=0;$j<count($category);$j++){
+
+            $value = $x%6+1;
+            $randx[$j] = $value;
+            $x=$x+1;
+        }
+        
+    ?>
     <div class="imagebox">
     <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-3">
                         <div class="category-item ch-400">
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/media/img/productimage/category-3.jpg" />
+                            <?php 
+                            $count = array_pop($randx);
+                            $cat1 = $category[$count-1];?>
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/media/img/productimage/<?php echo $cat1['image']; ?>" />
                             <a class="category-name" href="">
-                                <p>Some text goes here that describes the image</p>
+                                <p><?php echo $cat1['categories']; ?></p>
                             </a>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="category-item ch-250">
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/media/img/productimage/category-4.jpg" />
+                            <?php 
+                            $count = array_pop($randx);
+                            $cat1 = $category[$count-1];?>
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/media/img/productimage/<?php echo $cat1['image']; ?>" />
                             <a class="category-name" href="">
-                                <p>Some text goes here that describes the image</p>
+                                <p><?php echo $cat1['categories']; ?></p>
                             </a>
                         </div>
                         <div class="category-item ch-150">
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/media/img/productimage/category-5.jpg" />
+                            <?php 
+                            $count = array_pop($randx);
+                            $cat1 = $category[$count-1];?>
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/media/img/productimage/<?php echo $cat1['image']; ?>" />
                             <a class="category-name" href="">
-                                <p>Some text goes here that describes the image</p>
+                                <p><?php echo $cat1['categories']; ?></p>
                             </a>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="category-item ch-150">
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/media/img/productimage/category-6.jpg" />
+                            <?php 
+                            $count = array_pop($randx);
+                            $cat1 = $category[$count-1];?>
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/media/img/productimage/<?php echo $cat1['image']; ?>" />
                             <a class="category-name" href="">
-                                <p>Some text goes here that describes the image</p>
+                                <p><?php echo $cat1['categories']; ?></p>
                             </a>
                         </div>
                         <div class="category-item ch-250">
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/media/img/productimage/category-7.jpg" />
+                            <?php 
+                            $count = array_pop($randx);
+                            $cat1 = $category[$count-1];?>
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/media/img/productimage/<?php echo $cat1['image']; ?>" />
                             <a class="category-name" href="">
-                                <p>Some text goes here that describes the image</p>
+                                <p><?php echo $cat1['categories']; ?></p>
                             </a>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="category-item ch-400">
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/media/img/productimage/category-8.jpg" />
+                            <?php 
+                            $count = array_pop($randx);
+                            $cat1 = $category[$count-1];?>
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/media/img/productimage/<?php echo $cat1['image']; ?>" />
                             <a class="category-name" href="">
-                                <p>Some text goes here that describes the image</p>
+                                <p><?php echo $cat1['categories']; ?></p>
                             </a>
                         </div>
                     </div>

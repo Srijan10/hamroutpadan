@@ -6,18 +6,16 @@ if(isset($_GET)){
     $action = $_GET['action'];
     if($action){
         if($action=="remove_single_bucket"){
-            echo "action_remove";
             if(isset($_POST)){
                 remove_single_bucket($_POST['iid']);
             }
         }
         if($action=="add_single_bucket"){
-            echo "action_add";
             if(isset($_POST)){
                 add_single_bucket($_POST['iid']);
             }
         }
-        if($action="update_quantity_bucket"){
+        if($action="update_quantity_bucket"){  
             echo "action_update";
             if(isset($_POST)){
                 if($_POST['qty']){
