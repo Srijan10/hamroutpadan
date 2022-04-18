@@ -56,6 +56,9 @@ $bucket = get_bucket();
         <h4 style='border-bottom:solid;'> Order Summary</h4>
         <p>Total Rs:</p>
         <p id='totalprice'></p>
+        <div class="payment_button">
+            <a href="http://localhost/hamroutpadan/paymentform/" class="paymentbutton">Make payment</a>
+        </div>
         </div>
 </div>
 

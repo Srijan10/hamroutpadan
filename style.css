@@ -654,6 +654,20 @@ img#img {
     border-right: solid;
 }
 }
+.payment_button {
+    display: flex;
+}
+a.paymentbutton {
+    border: black solid;
+    padding: 10px;
+    margin: 10px;
+    background: #79d4f4;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+}
 
 /* login */
 .loginbackground {

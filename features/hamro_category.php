@@ -7,7 +7,7 @@ $category = category();
         <?php 
         foreach($category as $index=>$cat){
             ?>
-                <ul><a href="#"><i class="<?php echo $cat['icon']; ?>"></i><?php echo $cat['categories']; ?></a></ul>
+                <ul><a href="http://localhost/hamroutpadan/shop/?cat=<?php echo $cat['id']; ?>"><i class="<?php echo $cat['icon']; ?>"></i><?php echo $cat['categories']; ?></a></ul>
             <?php
         }
         ?>

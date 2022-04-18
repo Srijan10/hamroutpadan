@@ -68,8 +68,6 @@ function valid_utpadan_user(){
 }
 
 
-
-
 // function form_capture(){
    
 //   if(isset($_POST['btn_submit']))

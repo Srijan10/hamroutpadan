@@ -12,10 +12,12 @@ if(isset($_GET['order'])){
 }
 $sort = isset($_GET['sort'])?trim($_GET['sort']):"";
 $db_results = shop_item();
+if($_GET['cat']){
+    $db_results = category_item($_GET['cat']);
+}
 if($sort){
     $db_results = sort_product_price($db_results,$sort);
 }
-print_r($db_results);
 ?>
         <div class="shop_container">
             <div class="shopleft_container">
@@ -30,8 +32,8 @@ print_r($db_results);
                     </div>
                     <div class="shopfilters">
                         sort by
-                        <a href="http://localhost/hamroutpadan/shop/?sort=asec">low to high</a>
-                        <a href="http://localhost/hamroutpadan/shop/?sort=desc">high to low</a>
+                        <a href="http://localhost/hamroutpadan/shop/?sort=asec<?php if($_GET['cat']){echo "&cat=".$_GET['cat'];} ?>">low to high</a>
+                        <a href="http://localhost/hamroutpadan/shop/?sort=desc<?php if($_GET['cat']){echo "&cat=".$_GET['cat'];} ?>">high to low</a>
                     </div>
                 </div>
                 <?php 
@@ -42,7 +44,6 @@ print_r($db_results);
             </div>
         </div>
 <?php
-print_r(category(7));
 
 get_footer();
 ?>

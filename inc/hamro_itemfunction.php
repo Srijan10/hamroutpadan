@@ -42,12 +42,12 @@ function item($id='',$mid='',$order=''){
 }
 
 
-function insertItem($name,$price,$qty,$image='',$description='',$status='1'){
+function insertItem($item,$image){
     global $wpdb;
     $cid = wp_get_current_user()->ID;
     if(is_merchant($cid)){
         $item_table = $wpdb->prefix . 'item';
-        if($name&&$price&&$qty){
+        if($item['item_name']&&$item['item_price']&&$item['item_quantity']){
             if($image){
                 $error = save_Image($image);
                 if($qty==0){
@@ -55,16 +55,16 @@ function insertItem($name,$price,$qty,$image='',$description='',$status='1'){
                 }
                     if(count($error)==0){
                         $wpdb->insert($item_table, array(
-                            'name' => $name,
-                            'price' => $price,
-                            'qty' => $qty,
+                            'name' => $item['item_name'],
+                            'price' => $item['item_price'],
+                            'qty' => $item['item_quantity'],
                             'image' => $image['name'],
-                            'description' => $description,
-                            'status' => $status,
-                            'mid'=> $cid
+                            'description' => $item['item_description'],
+                            'status' => $item['status'],
+                            'mid'=> $cid,
+                            'category'=>$item['category']
                         ));
                             if($wpdb->insert_id>0){
-                                echo "inserted succesful";
                                 return true;
                             }else{
                                 return false; 
@@ -78,27 +78,27 @@ function insertItem($name,$price,$qty,$image='',$description='',$status='1'){
     }
    
 }
-function updateItem($iid,$mid,$preImage,$name,$price,$qty,$image='',$description='',$status='1'){
+function updateItem($item,$image=''){
    
     global $wpdb;
-    
     $cid = wp_get_current_user()->ID;
     if(is_merchant($cid)){
         $item_table = $wpdb->prefix . 'item';
-        if($name&&$price&&$qty){
+        if($item['item_name']&&$item['item_price']&&$item['item_quantity']){
             if($image['error']==0){
-                echo "apple";
                 $error = save_Image($image);
-                $preImage = $image['name'];
+                $_POST['updateImage'] = $image['name'];
             }
             $updated = $wpdb->update("$item_table",array(
-                "name" => $name,
-                "price" => $price,
-                "qty" => $qty,
-                "image" => $preImage,
-                "description" => $description,
-                "status" => $status),
-            array("id" => $iid));
+                'name' => $item['item_name'],
+                'price' => $item['item_price'],
+                'qty' => $item['item_quantity'],
+                'image' => $_POST['updateImage'],
+                'description' => $item['item_description'],
+                'status' => $item['status'],
+                'category'=>$item['category']
+            ),
+            array("id" => $item['iid']));
             if(false === $updated){
                 echo "error in update";
             }
@@ -201,7 +201,7 @@ function save_Image($image){
       }
     if(count($error)>0){
         print_r($error);
-  
+   
     }
     return $error;
   }

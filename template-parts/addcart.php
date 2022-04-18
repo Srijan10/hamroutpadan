@@ -16,7 +16,6 @@ if(isset($_GET)){
             }
         }
         if($action="update_quantity_bucket"){  
-            echo "action_update";
             if(isset($_POST)){
                 if($_POST['qty']){
                     update_quantity_bucket($_POST['iid'],$_POST['qty']);
@@ -35,7 +34,6 @@ if(isset($_GET)){
         }
     }
 }
-$bucket = get_bucket();
 $item = item();
 include_once("new.php");
 ?>

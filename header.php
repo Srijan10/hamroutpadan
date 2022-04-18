@@ -37,7 +37,7 @@
            <!-- middleheader -->
            <div class="middleheader">
             <ul>
-                <li>HOME</li>
+                <li>HOME    </li>
                 <li>SHOP</li>
                 <li>DASHBOARD</li>
              </ul>
@@ -52,7 +52,7 @@
                    <div class="col-sm-3">
                        <div class="leftbuttomheader">
                         <div class="setting"><i class="fa fa-gear"></i></div>
-                        <div class="cart"><i class="fa fa-cart-plus"></i></div></div>
+                        <div class="cart"><a href="http://localhost/hamroutpadan/addtocart/"><i class="fa fa-cart-plus"></i></a></div></div>
                     </div>
                </div>
            </div>

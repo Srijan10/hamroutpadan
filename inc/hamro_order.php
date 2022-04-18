@@ -1,15 +1,103 @@
 <?php
-function order($id=''){
-    echo "item fucntion ";
+
+//order functionality
+function order($cid=''){
     global $wpdb;
     $db_results = $wpdb->get_results(
         $wpdb->prepare(
             "select * from wp_order",''
         ),ARRAY_A
     );
+    if($cid){
+        $db_results = $wpdb->get_results(
+            $wpdb->prepare(
+                "select * from wp_order where cid=$cid",''
+            ),ARRAY_A
+        );
+    }
+    return $db_results;
+}
+function insert_order(){
+    $track=generateRandomString(6);
+    $buckets = get_bucket();
+    if($buckets){
+        foreach($buckets as $index=>$bucket){
+            global $wpdb;
+            $wpdb->insert("wp_order",array(
+                "cid"=>$bucket['cid'],
+                "iid"=>$bucket['iid'],
+                "quantity"=>$bucket['quantity'],
+                "date"=> $bucket['date'],
+                "status"=> '1',
+                "track"=> $track.$bucket['iid'],
+                "phase"=> '0',
+                "bid"=>$bucket['id']
+            ));
+            if($wpdb->insert_id>0){
+                remove_bucket($bucket['iid']);
+                ?>
+                <script>
+                    alert("thanks for ordering. You can track your order in order History");
+                </script>
+                <?php
+            }
+        }
+    }
+    else{
+        echo "you dont have any items in your bucket.";
+    }
+}
+
+
+function payment(){
+    global $wpdb;
+    $cid = wp_get_current_user()->ID;
+    $db_results = $wpdb->get_row(
+        $wpdb->prepare(
+            "select * from users_payment where uid=$cid",''
+        ),ARRAY_A
+    );
     return $db_results;
 }
 
+function insert_paymentinfo($payment){
+    global $wpdb;
+    $cid = wp_get_current_user()->ID;
+    $wpdb->insert("users_payment",array(
+        "payment_method"=>$payment['payment_method'],
+        "district"=>$payment['district'],
+        "street_address"=>$payment['street_address'],
+        "appartment_address"=>$payment['appartment_address'],
+        "mobile"=>$payment['phone'],
+        "uid"=>$cid
+    ));
+    if($wpdb->insert_id>0){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+function update_paymentinfo($payment){
+    global $wpdb;
+    $cid = wp_get_current_user()->ID;
+    if(payment()){ 
+        $preepayment = payment();
+        $updated = $wpdb->update("users_payment",array(
+            "payment_method"=>$payment['payment_method'],
+            "district"=>$payment['district'],
+            "street_address"=>$payment['street_address'],
+            "appartment_address"=>$payment['appartment_address'],
+            "mobile"=>$payment['phone'],
+            "uid"=>$cid),
+        array("id" => $preepayment['id']));
+        if ( false === $updated ) {
+            echo "There was an error while updating.";
+        }
+    }
+   
+}
 //cart functionalities
 
 function insert_bucket($iid,$quantity){
@@ -146,3 +234,76 @@ function remove_single_bucket($iid,$qty=1){
         return false;
     }
 }
+
+
+
+function generateRandomString($length = 10) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
+  }
+
+
+  function orderhistory(){
+      global $wpdb;
+      $cid = wp_get_current_user()->ID;
+      $orders = order($cid);
+      $i=0;
+      ?>
+      <style>
+          .orderimage {
+    height: 150px;
+    width: 200px;
+    overflow: hidden;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}.ordercontainer tr th {
+    padding: 10px;
+}
+      </style>
+      
+      <div class="container ordercontainer">
+      <table>
+          <tr>
+              <th>sn</th>
+              <th>item_name</th>
+              <th>item_Image</th>
+              <th>item_Quantity</th>
+              <th>Order Track No.</th>
+              <th>Date</th>
+              <th>Phase</th>
+              <th>Discart the order</th>
+          </tr>
+            <?php
+            foreach($orders as $index=>$order){
+                $item = item($order['iid']);
+                ?>
+                <tr>
+                    <td><?php echo ++$i;?></td>
+                    <td><?php echo $item['name']; ?></td>
+                    <td><div class="orderimage">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/media/img/product/<?php echo $item['image']; ?>" alt="">
+                        
+                    </div>
+                        </td>
+                    <td><?php echo $order['quantity']; ?></td>
+                    <td><?php echo $order['track']; ?></td>
+                    <td><?php echo $order['date']; ?></td>
+                    <td><?php echo $order['phase'];?></td>
+                    <td><?php echo "discart";?></td>
+                </tr><?php
+            }
+            ?>
+      </table>
+
+      </div>
+      
+      <?php
+  }

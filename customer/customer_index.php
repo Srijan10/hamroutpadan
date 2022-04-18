@@ -59,7 +59,7 @@ $db_results = item();
                             $count = array_pop($randx);
                             $cat1 = $category[$count-1];?>
                             <img src="<?php echo get_template_directory_uri(); ?>/assets/media/img/productimage/<?php echo $cat1['image']; ?>" />
-                            <a class="category-name" href="">
+                            <a class="category-name" href="http://localhost/hamroutpadan/shop/?cat=<?php echo $cat1['id']; ?>">
                                 <p><?php echo $cat1['categories']; ?></p>
                             </a>
                         </div>
@@ -70,7 +70,7 @@ $db_results = item();
                             $count = array_pop($randx);
                             $cat1 = $category[$count-1];?>
                             <img src="<?php echo get_template_directory_uri(); ?>/assets/media/img/productimage/<?php echo $cat1['image']; ?>" />
-                            <a class="category-name" href="">
+                            <a class="category-name" href="http://localhost/hamroutpadan/shop/?cat=<?php echo $cat1['id']; ?>">
                                 <p><?php echo $cat1['categories']; ?></p>
                             </a>
                         </div>
@@ -79,7 +79,7 @@ $db_results = item();
                             $count = array_pop($randx);
                             $cat1 = $category[$count-1];?>
                             <img src="<?php echo get_template_directory_uri(); ?>/assets/media/img/productimage/<?php echo $cat1['image']; ?>" />
-                            <a class="category-name" href="">
+                            <a class="category-name" href="http://localhost/hamroutpadan/shop/?cat=<?php echo $cat1['id']; ?>">
                                 <p><?php echo $cat1['categories']; ?></p>
                             </a>
                         </div>
@@ -90,7 +90,7 @@ $db_results = item();
                             $count = array_pop($randx);
                             $cat1 = $category[$count-1];?>
                             <img src="<?php echo get_template_directory_uri(); ?>/assets/media/img/productimage/<?php echo $cat1['image']; ?>" />
-                            <a class="category-name" href="">
+                            <a class="category-name" href="http://localhost/hamroutpadan/shop/?cat=<?php echo $cat1['id']; ?>">
                                 <p><?php echo $cat1['categories']; ?></p>
                             </a>
                         </div>
@@ -99,7 +99,7 @@ $db_results = item();
                             $count = array_pop($randx);
                             $cat1 = $category[$count-1];?>
                             <img src="<?php echo get_template_directory_uri(); ?>/assets/media/img/productimage/<?php echo $cat1['image']; ?>" />
-                            <a class="category-name" href="">
+                            <a class="category-name" href="http://localhost/hamroutpadan/shop/?cat=<?php echo $cat1['id']; ?>">
                                 <p><?php echo $cat1['categories']; ?></p>
                             </a>
                         </div>
@@ -110,7 +110,7 @@ $db_results = item();
                             $count = array_pop($randx);
                             $cat1 = $category[$count-1];?>
                             <img src="<?php echo get_template_directory_uri(); ?>/assets/media/img/productimage/<?php echo $cat1['image']; ?>" />
-                            <a class="category-name" href="">
+                            <a class="category-name" href="http://localhost/hamroutpadan/shop/?cat=<?php echo $cat1['id']; ?>">
                                 <p><?php echo $cat1['categories']; ?></p>
                             </a>
                         </div>
